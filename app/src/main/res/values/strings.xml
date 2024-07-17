@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Converted Cash</string>
     <string name="loading">loading progress bar</string>
+    <string name="btn_convert">button convert</string>
 </resources>

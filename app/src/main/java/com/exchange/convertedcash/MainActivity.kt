@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import com.exchange.convertedcash.databinding.ActivityMainBinding
+import com.exchange.convertedcash.ui.MenuActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

@@ -37,6 +37,11 @@ class FiatActivity : AppCompatActivity() {
             startActivity(Intent(this@FiatActivity, ConverterActivity::class.java))
             finish()
         }
+        binding.btnBack.setOnClickListener {
+            it.startAnimation(animation)
+            startActivity(Intent(this@FiatActivity, MenuCategoryActivity::class.java))
+            finish()
+        }
     }
 
     private fun setCurrencyAdapter() {

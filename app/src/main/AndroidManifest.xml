@@ -13,12 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ConvertedCash"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.MenuCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.FiatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ConverterActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

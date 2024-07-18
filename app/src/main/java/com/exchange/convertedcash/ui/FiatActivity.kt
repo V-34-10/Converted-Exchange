@@ -2,22 +2,16 @@ package com.exchange.convertedcash.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import com.exchange.convertedcash.R
-import com.exchange.convertedcash.adapters.CryptocurrencyAdapter
 import com.exchange.convertedcash.adapters.CurrencyAdapter
-import com.exchange.convertedcash.crypto.CryptoCompareResponse
-import com.exchange.convertedcash.crypto.CryptoListResponse
-import com.exchange.convertedcash.crypto.RetrofitClient
 import com.exchange.convertedcash.databinding.ActivityFiatBinding
-import com.exchange.convertedcash.databinding.ActivityMenuBinding
 import com.exchange.convertedcash.fiat.OpenExchangeRatesResponse
 import com.exchange.convertedcash.fiat.RetrofitClientRates
-import com.exchange.convertedcash.model.Cryptocurrency
 import com.exchange.convertedcash.model.Currency
 import retrofit2.Call
 import retrofit2.Callback

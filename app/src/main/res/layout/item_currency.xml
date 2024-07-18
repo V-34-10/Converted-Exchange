@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp10"
     android:background="@drawable/background_item_currency">
 
     <ImageView
@@ -11,8 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/bitcoin_logo"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,15 +30,14 @@
         android:text="@string/bitcoin_name"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/short_name_currency"
-        app:layout_constraintStart_toEndOf="@+id/image_currency" />
+        app:layout_constraintStart_toEndOf="@+id/image_currency"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/short_name_currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="15dp"
         android:contentDescription="@string/app_name"
         android:fontFamily="@font/montserrat_light"
         android:text="@string/bitcoin_short_name"
@@ -49,17 +49,14 @@
 
     <ImageView
         android:id="@+id/image_chart_currency"
-        android:layout_width="250dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/bitcoin_chart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/price_currency"
         app:layout_constraintStart_toEndOf="@+id/name_currency"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/price_currency"
@@ -74,6 +71,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

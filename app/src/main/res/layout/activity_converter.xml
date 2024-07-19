@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_menu"
+    tools:context=".ui.ConverterActivity">
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/btn_back"
+        android:clickable="true"
+        android:contentDescription="@string/btn_back"
+        android:focusable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/amountEditText"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:hint="@string/enter_amount"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fromCurrencyLogo" />
+
+    <ImageView
+        android:id="@+id/fromCurrencyLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/usd_logo_circle"
+        android:clickable="true"
+        android:contentDescription="@string/btn_back"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="@+id/fromCurrencySpinner"
+        app:layout_constraintStart_toStartOf="@+id/amountEditText"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+    <ImageView
+        android:id="@+id/toCurrencyLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bitcoin_logo_circle"
+        android:clickable="true"
+        android:contentDescription="@string/btn_back"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="@+id/toCurrencySpinner"
+        app:layout_constraintStart_toStartOf="@+id/toCurrencySpinner"
+        app:layout_constraintTop_toTopOf="@+id/fromCurrencyLogo" />
+
+    <Spinner
+        android:id="@+id/fromCurrencySpinner"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:popupBackground="@drawable/spinner_dropdown_background"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:background="@drawable/background_text_view"
+        app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
+        app:layout_constraintStart_toEndOf="@+id/amountEditText"
+        app:layout_constraintTop_toTopOf="@+id/amountEditText" />
+
+    <Spinner
+        android:id="@+id/toCurrencySpinner"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:popupBackground="@drawable/spinner_dropdown_background"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:background="@drawable/background_text_view"
+        app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
+        app:layout_constraintStart_toEndOf="@+id/fromCurrencySpinner"
+        app:layout_constraintTop_toTopOf="@+id/amountEditText" />
+
+    <ImageView
+        android:id="@+id/convertButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_ok"
+        android:clickable="true"
+        android:contentDescription="@string/btn_convert"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fromCurrencySpinner" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/background_text_view"
+        android:fontFamily="@font/montserrat_bold"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/convertButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

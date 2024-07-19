@@ -37,22 +37,22 @@
 
     <ImageView
         android:id="@+id/fromCurrencyLogo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:background="@drawable/usd_logo_circle"
+        android:background="@drawable/bnb_logo"
         android:clickable="true"
         android:contentDescription="@string/btn_back"
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="@+id/fromCurrencySpinner"
-        app:layout_constraintStart_toStartOf="@+id/amountEditText"
+        app:layout_constraintStart_toStartOf="@+id/fromCurrencySpinner"
         app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
     <ImageView
         android:id="@+id/toCurrencyLogo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/bitcoin_logo_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sol_logo"
         android:clickable="true"
         android:contentDescription="@string/btn_back"
         android:focusable="true"
@@ -62,28 +62,30 @@
 
     <Spinner
         android:id="@+id/fromCurrencySpinner"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/background_text_view"
         android:fontFamily="@font/montserrat_bold"
         android:popupBackground="@drawable/spinner_dropdown_background"
-        android:textColor="@color/white"
         android:textAlignment="center"
-        android:background="@drawable/background_text_view"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
         app:layout_constraintStart_toEndOf="@+id/amountEditText"
         app:layout_constraintTop_toTopOf="@+id/amountEditText" />
 
     <Spinner
         android:id="@+id/toCurrencySpinner"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="0dp"
         android:layout_marginStart="25dp"
-        android:popupBackground="@drawable/spinner_dropdown_background"
-        android:fontFamily="@font/montserrat_bold"
-        android:textColor="@color/white"
-        android:textAlignment="center"
         android:background="@drawable/background_text_view"
+        android:fontFamily="@font/montserrat_bold"
+        android:popupBackground="@drawable/spinner_dropdown_background"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/amountEditText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fromCurrencySpinner"
         app:layout_constraintTop_toTopOf="@+id/amountEditText" />
 

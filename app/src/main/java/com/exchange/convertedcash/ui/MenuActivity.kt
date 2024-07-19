@@ -28,6 +28,14 @@ class MenuActivity : AppCompatActivity() {
         setContentView(binding.root)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
+        binding.progressBar.visibility = View.VISIBLE
+        binding.progressBar.startAnimation(
+            AnimationUtils.loadAnimation(
+                this,
+                R.anim.progress_animation
+            )
+        )
+
         setCryptoAdapter()
         navigateButton()
     }
@@ -85,6 +93,7 @@ class MenuActivity : AppCompatActivity() {
                                 adapter = CryptocurrencyAdapter(cryptoList)
                                 binding.listCurrency.adapter = adapter
                                 adapter.notifyDataSetChanged()
+                                binding.progressBar.visibility = View.GONE
                             } else {
                                 Log.e("MenuActivity", "Помилка цін: ${priceResponse.code()}")
                             }

@@ -26,6 +26,14 @@ class FiatActivity : AppCompatActivity() {
         setContentView(binding.root)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 
+        binding.progressBar.visibility = View.VISIBLE
+        binding.progressBar.startAnimation(
+            AnimationUtils.loadAnimation(
+                this,
+                R.anim.progress_animation
+            )
+        )
+
         setCurrencyAdapter()
         navigateButton()
     }
@@ -63,6 +71,7 @@ class FiatActivity : AppCompatActivity() {
                     adapter = CurrencyAdapter(currencyList)
                     binding.listCurrency.adapter = adapter
                     adapter.notifyDataSetChanged()
+                    binding.progressBar.visibility = View.GONE
                 } else {
                     Log.e("FiatActivity", "Помилка: ${response.code()}")
                 }

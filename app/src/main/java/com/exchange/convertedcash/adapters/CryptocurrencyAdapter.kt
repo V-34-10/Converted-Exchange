@@ -29,11 +29,14 @@ class CryptocurrencyAdapter(private val cryptoList: List<Cryptocurrency>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CryptocurrencyViewHolder, position: Int) {
         val crypto = cryptoList[position]
-        holder.nameTextView.text = crypto.name
+
+        val newName = crypto.name.replace("(${crypto.symbol})", "", ignoreCase = true)
+
+        holder.nameTextView.text = newName
         holder.nameShortTextView.text = crypto.symbol
         holder.priceTextView.text = String.format("$%.5f", crypto.usdPrice)
 
-        val imageResource = when (crypto.name.uppercase()) {
+        val imageResource = when (crypto.symbol.uppercase()) {
             "BTC" -> R.drawable.bitcoin_logo
             "ETH" -> R.drawable.ethereum_ico
             "BNB" -> R.drawable.bnb_logo

@@ -48,40 +48,6 @@ class MenuActivity : AppCompatActivity() {
 
     private fun setCryptoAdapter() {
         val cryptoSymbols = "BTC,ETH,BNB,PEPE,SOL,DOGE,WIF"
-        /*val call = RetrofitClient.apiService.getCryptocurrencyPrices(fromSymbols = cryptoSymbols)
-
-        call.enqueue(object : Callback<CryptoCompareResponse> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(
-                call: Call<CryptoCompareResponse>,
-                response: Response<CryptoCompareResponse>
-            ) {
-                if (response.isSuccessful) {
-                    val cryptoData = response.body()?.raw
-                    val cryptoList = mutableListOf<Cryptocurrency>()
-
-                    cryptoData?.forEach { (symbol, data) ->
-                        val usdPrice = data["USD"]?.price
-                        cryptoList.add(
-                            Cryptocurrency(
-                                symbol = symbol,
-                                name = symbol,
-                                usdPrice = usdPrice
-                            )
-                        )
-                    }
-                    adapter = CryptocurrencyAdapter(cryptoList)
-                    binding.listCurrency.adapter = adapter
-                    adapter.notifyDataSetChanged()
-                } else {
-                    Log.e("MainActivity", "Помилка: ${response.code()}")
-                }
-            }
-
-            override fun onFailure(call: Call<CryptoCompareResponse>, t: Throwable) {
-                Log.e("MainActivity", "Помилка: ${t.message}")
-            }
-        })*/
 
         val listCall = RetrofitClient.apiService.getCryptocurrencyList()
         listCall.enqueue(object : Callback<CryptoListResponse> {
@@ -90,8 +56,8 @@ class MenuActivity : AppCompatActivity() {
                 response: Response<CryptoListResponse>
             ) {
                 if (response.isSuccessful) {
-                    val cryptoData = response.body()?.data ?: emptyMap()
-
+                    val cryptoData = response.body()?.Data ?: emptyMap()
+                    Log.d("MenuActivity", "Список криптовалют: ${response.body()}")
                     val priceCall =
                         RetrofitClient.apiService.getCryptocurrencyPrices(fromSymbols = cryptoSymbols)
                     priceCall.enqueue(object : Callback<CryptoCompareResponse> {
@@ -101,13 +67,13 @@ class MenuActivity : AppCompatActivity() {
                             priceResponse: Response<CryptoCompareResponse>
                         ) {
                             if (priceResponse.isSuccessful) {
-                                val priceData = priceResponse.body()?.raw
+                                val priceData = priceResponse.body()?.RAW
                                 val cryptoList = mutableListOf<Cryptocurrency>()
-
+                                Log.d("MenuActivity", "Список криптовалют: ${priceResponse.body()}")
                                 priceData?.forEach { (symbol, data) ->
-                                    val usdPrice = data["USD"]?.price
+                                    val usdPrice = data["USD"]?.PRICE
 
-                                    val fullName = cryptoData[symbol]?.fullName ?: symbol
+                                    val fullName = cryptoData[symbol]?.FullName ?: symbol
                                     cryptoList.add(
                                         Cryptocurrency(
                                             symbol = symbol,

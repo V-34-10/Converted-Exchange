@@ -1,6 +1,6 @@
 package com.exchange.convertedcash.crypto
 
 data class CryptoData(
-    val price: Double? = null
+    val PRICE: Double? = null
 )
 

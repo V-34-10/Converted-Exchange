@@ -1,13 +1,13 @@
 package com.exchange.convertedcash.crypto
 
 data class CryptoListResponse(
-    val response: String,
-    val message: String,
-    val data: Map<String, CryptoInfo>
+    val Response: String,
+    val Message: String,
+    val Data: Map<String, CryptoInfo>
 )
 
 data class CryptoInfo(
-    val id: String,
-    val name: String,
-    val fullName: String
+    val Id: String,
+    val Name: String,
+    val FullName: String
 )

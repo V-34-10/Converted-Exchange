@@ -7,15 +7,15 @@ import retrofit2.http.Query
 
 interface CryptoCompareService {
 
-    @GET("data/coinlist")
+    @GET("data/all/coinlist")
     fun getCryptocurrencyList(
-        @Query("api_key") apiKey: String = "ff02f8af65b42491727a1961cda2822abbe6d6b4a9ea5cebdd256576a818b7e2"
+        @Query("api_key") apiKey: String = "42b73a713821e42cec6f35201e54504144726686ccd5d56c470b22dba1c2701f"
     ): Call<CryptoListResponse>
 
     @GET("data/pricemultifull")
     fun getCryptocurrencyPrices(
         @Query("fsyms") fromSymbols: String,
         @Query("tsyms") toSymbols: String = "USD",
-        @Query("api_key") apiKey: String = "ff02f8af65b42491727a1961cda2822abbe6d6b4a9ea5cebdd256576a818b7e2"
+        @Query("api_key") apiKey: String = "42b73a713821e42cec6f35201e54504144726686ccd5d56c470b22dba1c2701f"
     ): Call<CryptoCompareResponse>
 }

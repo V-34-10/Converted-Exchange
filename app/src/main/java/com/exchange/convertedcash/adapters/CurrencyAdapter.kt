@@ -1,5 +1,6 @@
 package com.exchange.convertedcash.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,12 +18,13 @@ class CurrencyAdapter(private val currencyList: List<Currency>) :
         val rateTextView: TextView = itemView.findViewById(R.id.currencyRate)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_currency_fiat, parent, false)
-        return CurrencyViewHolder(itemView)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder =
+        CurrencyViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_currency_fiat, parent, false)
+        )
 
+    @SuppressLint("DefaultLocale")
     override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
         val currency = currencyList[position]
         holder.codeTextView.text = currency.code

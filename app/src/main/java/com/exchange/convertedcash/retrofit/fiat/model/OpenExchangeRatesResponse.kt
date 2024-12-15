@@ -1,4 +1,4 @@
-package com.exchange.convertedcash.fiat
+package com.exchange.convertedcash.retrofit.fiat.model
 
 data class OpenExchangeRatesResponse(
     val base: String,

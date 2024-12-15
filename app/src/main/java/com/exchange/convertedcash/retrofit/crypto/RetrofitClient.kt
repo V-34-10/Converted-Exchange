@@ -1,4 +1,4 @@
-package com.exchange.convertedcash.crypto
+package com.exchange.convertedcash.retrofit.crypto
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -1,6 +1,8 @@
-package com.exchange.convertedcash.crypto
+package com.exchange.convertedcash.retrofit.crypto
 
 
+import com.exchange.convertedcash.retrofit.crypto.model.CryptoCompareResponse
+import com.exchange.convertedcash.retrofit.crypto.model.CryptoListResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

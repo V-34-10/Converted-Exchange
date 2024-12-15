@@ -1,5 +1,6 @@
-package com.exchange.convertedcash.fiat
+package com.exchange.convertedcash.retrofit.fiat
 
+import com.exchange.convertedcash.retrofit.fiat.model.OpenExchangeRatesResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

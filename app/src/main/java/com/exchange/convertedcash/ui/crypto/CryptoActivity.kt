@@ -1,4 +1,4 @@
-package com.exchange.convertedcash.ui
+package com.exchange.convertedcash.ui.crypto
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,16 +9,18 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.exchange.convertedcash.R
 import com.exchange.convertedcash.adapters.CryptocurrencyAdapter
-import com.exchange.convertedcash.crypto.RetrofitClient
+import com.exchange.convertedcash.retrofit.crypto.RetrofitClient
 import com.exchange.convertedcash.databinding.ActivityMenuBinding
-import com.exchange.convertedcash.crypto.CryptoCompareResponse
-import com.exchange.convertedcash.crypto.CryptoListResponse
+import com.exchange.convertedcash.retrofit.crypto.model.CryptoCompareResponse
+import com.exchange.convertedcash.retrofit.crypto.model.CryptoListResponse
 import com.exchange.convertedcash.model.Cryptocurrency
+import com.exchange.convertedcash.ui.converter.ConverterActivity
+import com.exchange.convertedcash.ui.menu.MenuCategoryActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MenuActivity : AppCompatActivity() {
+class CryptoActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMenuBinding.inflate(layoutInflater) }
     private lateinit var adapter: CryptocurrencyAdapter
@@ -36,7 +38,7 @@ class MenuActivity : AppCompatActivity() {
             )
         )
 
-        setCryptoAdapter()
+        initCryptoAdapter()
         navigateButton()
     }
 
@@ -44,18 +46,18 @@ class MenuActivity : AppCompatActivity() {
         val animation = AnimationUtils.loadAnimation(this, R.anim.scale_btn)
         binding.btnConvert.setOnClickListener {
             it.startAnimation(animation)
-            startActivity(Intent(this@MenuActivity, ConverterActivity::class.java))
+            startActivity(Intent(this@CryptoActivity, ConverterActivity::class.java))
             finish()
         }
         binding.btnBack.setOnClickListener {
             it.startAnimation(animation)
-            startActivity(Intent(this@MenuActivity, MenuCategoryActivity::class.java))
+            startActivity(Intent(this@CryptoActivity, MenuCategoryActivity::class.java))
             finish()
         }
     }
 
-    private fun setCryptoAdapter() {
-        val cryptoSymbols = "BTC,ETH,BNB,PEPE,SOL,DOGE,WIF"
+    private fun initCryptoAdapter() {
+        val cryptoSymbols = "BTC,ETH,BNB,PEPE,SOL,DOGE,WIF,XRP"
 
         val listCall = RetrofitClient.apiService.getCryptocurrencyList()
         listCall.enqueue(object : Callback<CryptoListResponse> {

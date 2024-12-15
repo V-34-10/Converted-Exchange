@@ -1,4 +1,4 @@
-package com.exchange.convertedcash.ui
+package com.exchange.convertedcash.ui.fiat
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -10,9 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.exchange.convertedcash.R
 import com.exchange.convertedcash.adapters.CurrencyAdapter
 import com.exchange.convertedcash.databinding.ActivityFiatBinding
-import com.exchange.convertedcash.fiat.OpenExchangeRatesResponse
-import com.exchange.convertedcash.fiat.RetrofitClientRates
+import com.exchange.convertedcash.retrofit.fiat.model.OpenExchangeRatesResponse
+import com.exchange.convertedcash.retrofit.fiat.RetrofitClientRates
 import com.exchange.convertedcash.model.Currency
+import com.exchange.convertedcash.ui.converter.ConverterActivity
+import com.exchange.convertedcash.ui.menu.MenuCategoryActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

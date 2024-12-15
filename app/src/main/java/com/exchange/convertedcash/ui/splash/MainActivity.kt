@@ -1,4 +1,4 @@
-package com.exchange.convertedcash.ui
+package com.exchange.convertedcash.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import com.exchange.convertedcash.R
 import com.exchange.convertedcash.databinding.ActivityMainBinding
+import com.exchange.convertedcash.ui.menu.MenuCategoryActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

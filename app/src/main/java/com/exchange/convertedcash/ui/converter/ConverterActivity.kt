@@ -1,4 +1,4 @@
-package com.exchange.convertedcash.ui
+package com.exchange.convertedcash.ui.converter
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,10 +11,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.exchange.convertedcash.R
-import com.exchange.convertedcash.crypto.RetrofitClient
+import com.exchange.convertedcash.retrofit.crypto.RetrofitClient
 import com.exchange.convertedcash.databinding.ActivityConverterBinding
-import com.exchange.convertedcash.fiat.OpenExchangeRatesResponse
-import com.exchange.convertedcash.fiat.RetrofitClientRates
+import com.exchange.convertedcash.retrofit.fiat.model.OpenExchangeRatesResponse
+import com.exchange.convertedcash.retrofit.fiat.RetrofitClientRates
+import com.exchange.convertedcash.ui.menu.MenuCategoryActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -128,6 +129,7 @@ class ConverterActivity : AppCompatActivity() {
         return imageResource
     }
 
+    @SuppressLint("DefaultLocale")
     private fun convertCurrency() {
         val amountString = binding.amountEditText.text.toString()
         val fromCurrency = binding.fromCurrencySpinner.selectedItem.toString()

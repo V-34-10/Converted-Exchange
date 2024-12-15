@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_menu"
-    tools:context=".ui.ConverterActivity">
+    tools:context=".ui.converter.ConverterActivity">
 
     <ImageView
         android:id="@+id/btn_back"
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:background="@drawable/bnb_logo"
+        android:background="@drawable/usd_logo_circle"
         android:clickable="true"
         android:contentDescription="@string/btn_back"
         android:focusable="true"
@@ -52,7 +52,7 @@
         android:id="@+id/toCurrencyLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/sol_logo"
+        android:background="@drawable/usd_logo_circle"
         android:clickable="true"
         android:contentDescription="@string/btn_back"
         android:focusable="true"

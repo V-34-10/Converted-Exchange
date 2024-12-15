@@ -1,20 +1,20 @@
 package com.exchange.convertedcash.ui.fiat
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import com.exchange.convertedcash.R
 import com.exchange.convertedcash.adapters.CurrencyAdapter
 import com.exchange.convertedcash.databinding.ActivityFiatBinding
-import com.exchange.convertedcash.retrofit.fiat.model.OpenExchangeRatesResponse
-import com.exchange.convertedcash.retrofit.fiat.RetrofitClientRates
 import com.exchange.convertedcash.model.Currency
+import com.exchange.convertedcash.retrofit.fiat.RetrofitClientRates
+import com.exchange.convertedcash.retrofit.fiat.model.OpenExchangeRatesResponse
 import com.exchange.convertedcash.ui.converter.ConverterActivity
 import com.exchange.convertedcash.ui.menu.MenuCategoryActivity
+import com.exchange.convertedcash.utils.AnimationManager.startAnimateClickButton
+import com.exchange.convertedcash.utils.AnimationManager.startAnimationProgressBarForResponse
+import com.exchange.convertedcash.utils.NavigationManager.navigateToActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,61 +27,60 @@ class FiatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-
-        binding.progressBar.visibility = View.VISIBLE
-        binding.progressBar.startAnimation(
-            AnimationUtils.loadAnimation(
-                this,
-                R.anim.progress_animation
-            )
-        )
-
-        setCurrencyAdapter()
+        startAnimationProgressBarForResponse(binding.progressBar)
+        callResponseFromService()
         navigateButton()
     }
 
     private fun navigateButton() {
-        val animation = AnimationUtils.loadAnimation(this, R.anim.scale_btn)
         binding.btnConvert.setOnClickListener {
-            it.startAnimation(animation)
-            startActivity(Intent(this@FiatActivity, ConverterActivity::class.java))
-            finish()
+            startAnimateClickButton(it, this)
+            navigateToActivity(ConverterActivity::class.java, this)
         }
         binding.btnBack.setOnClickListener {
-            it.startAnimation(animation)
-            startActivity(Intent(this@FiatActivity, MenuCategoryActivity::class.java))
-            finish()
+            startAnimateClickButton(it, this)
+            navigateToActivity(MenuCategoryActivity::class.java, this)
         }
     }
 
-    private fun setCurrencyAdapter() {
+    private fun callResponseFromService() {
         val call = RetrofitClientRates.apiService.getLatestRates()
         call.enqueue(object : Callback<OpenExchangeRatesResponse> {
-            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
                 call: Call<OpenExchangeRatesResponse>,
                 response: Response<OpenExchangeRatesResponse>
             ) {
                 if (response.isSuccessful) {
-                    val rates = response.body()?.rates
-                    val currencyList = mutableListOf<Currency>()
-
-                    rates?.forEach { (code, rate) ->
-                        currencyList.add(Currency(code = code, rate = rate))
-                    }
-
-                    adapter = CurrencyAdapter(currencyList)
-                    binding.listCurrency.adapter = adapter
-                    adapter.notifyDataSetChanged()
-                    binding.progressBar.visibility = View.GONE
+                    successResponse(response)
                 } else {
-                    Log.e("FiatActivity", "Помилка: ${response.code()}")
+                    Log.e("FiatActivity", "Error: ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<OpenExchangeRatesResponse>, t: Throwable) {
-                Log.e("FiatActivity", "Помилка: ${t.message}")
+                Log.e("FiatActivity", "Error: ${t.message}")
             }
         })
+    }
+
+    private fun successResponse(response: Response<OpenExchangeRatesResponse>) {
+        val rates = response.body()?.rates
+        val currencyList = mutableListOf<Currency>()
+        rates?.forEach { (code, rate) -> currencyList.add(Currency(code = code, rate = rate)) }
+        initAdapterFiat(currencyList)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun initAdapterFiat(currencyList: List<Currency>) {
+        adapter = CurrencyAdapter(currencyList)
+        binding.listCurrency.adapter = adapter
+        adapter.notifyDataSetChanged()
+        binding.progressBar.visibility = View.GONE
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        navigateToActivity(MenuCategoryActivity::class.java, this)
     }
 }

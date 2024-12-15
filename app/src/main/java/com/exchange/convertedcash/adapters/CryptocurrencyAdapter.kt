@@ -20,13 +20,12 @@ class CryptocurrencyAdapter(private val cryptoList: List<Cryptocurrency>) :
         val imageCurrency: ImageView = itemView.findViewById(R.id.image_currency)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptocurrencyViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_currency, parent, false)
-        return CryptocurrencyViewHolder(itemView)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptocurrencyViewHolder =
+        CryptocurrencyViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_currency, parent, false)
+        )
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "DefaultLocale")
     override fun onBindViewHolder(holder: CryptocurrencyViewHolder, position: Int) {
         val crypto = cryptoList[position]
 
@@ -44,6 +43,9 @@ class CryptocurrencyAdapter(private val cryptoList: List<Cryptocurrency>) :
             "SOL" -> R.drawable.sol_logo
             "DOGE" -> R.drawable.doge_logo
             "WIF" -> R.drawable.wif_logo
+            "XRP" -> R.drawable.xrp_logo
+            "TON" -> R.drawable.ton_logo
+            "LTC" -> R.drawable.ltc_logo
             else -> {
                 R.drawable.bitcoin_logo
             }
